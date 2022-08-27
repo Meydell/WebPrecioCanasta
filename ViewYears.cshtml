@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    @*//Copiamos la referencia de Booststrap5*@
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <title>Home</title>
+</head>
+<body class="body" style="background-color:black">
+
+    @*Header*@
+    <div class="Header">
+        <div class="Navbar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <h2 class="namePage" style="color: white; font-family: 'Bradley Hand ITC'">Precio de Canasta</h2>
+                    </a>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="~/Index.cshtml">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/ViewYears.cshtml" tabindex="-1" aria-disabled="true" title="Years Service">Años Registrados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/ViewMeses.cshtml" tabindex="-1" aria-disabled="true" title="Meses">Meses Registrados</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="~/ViewCategoriaMonto.cshtml" tabindex="-1" aria-disabled="true" title="Meses">Categorías - Monto</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Year</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Prom</th>
+                </tr>
+            </thead>000
+            <tbody>
+                @foreach (var item in WebPrecioCanasta.Global.ListMontosMensuales)
+                {
+                    <tr>
+                        <td>@WebPrecioCanasta.Global.ListYears.Where(x=> x.Id == item.IdYear).First().Year</td>
+                        <td>@WebPrecioCanasta.Global.ListCategoria.Where(x=> x.Id == 1).First().Name</td>
+                        <td>@WebPrecioCanasta.Global.ListMontosMensuales.Where(x => x.IdCategoria == 1).Sum(x=> x.Monto)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
+                    <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
+                </a>
+                <span class="mb-3 mb-md-0 text-muted">© 2022 Web Precio de Canasta Site by Meydell Lezama</span>
+            </div>
+
+            <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>
